@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>CRUD App</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Upload">
+    </form>
+    <div class="image-gallery">
+        {% for image in images %}
+            <div class="image-card">
+                <img src="{{ url_for('get_image', filename=image) }}" alt="Image">
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
